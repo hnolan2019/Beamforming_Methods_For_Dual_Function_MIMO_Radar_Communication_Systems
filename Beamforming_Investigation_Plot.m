@@ -4,7 +4,7 @@ clear; close all; clc;
 c = physconst('LightSpeed'); 
 fc = 300e6; 
 mylambda = c/fc;
-azangles = -90:0.5:90;
+azangles = -90:0.1:90;
 transmit_antennas = [16, 64];
 Pt = 40;
 L = length(transmit_antennas);
@@ -26,7 +26,7 @@ plot_figure(L, transmit_antennas, w_mrt, azangles, fc, fileLocation, mylambda, t
 % --------- Plot 2: Multi User MISO Beamforming --------------------------%
 
 % --- Simulation Parameters -------%
-theta = [-40, 0, 40];                       )
+theta = [-40, 0, 40];                       
 nUsers = length(theta);
 fileLocation = 'Data/Beamforoming_investigation/multi_user_mrt_beampattern.pdf';
 
