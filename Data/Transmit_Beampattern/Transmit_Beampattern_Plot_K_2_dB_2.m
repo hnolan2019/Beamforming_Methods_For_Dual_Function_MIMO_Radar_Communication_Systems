@@ -11,7 +11,7 @@ fileLocation4 = 'transmit_beampattern_2_users_2dB.pdf';
 D1= readtable('updated_beampattern_results_k_2aB_10.csv');  % 2 users 10dB
 D2 = readtable('beampattern_results_k_4_db_10.csv');        % 4 users 10dB
 D3 = readtable('beampattern_results_k_6_dB_10.csv');        % 6 users 10dB
-D4 = readtable('beampattern_results_2_users_2dB.csv');        % 6 users 10dB
+D4 = readtable('beampattern_results_2_users_2dB.csv');      % 6 users 10dB
 
 % ----- Plot 1: 2 Users 10dB ------%
 az1 = D1.Azimuth_deg;
@@ -93,10 +93,12 @@ function plot_transmit_beampattern(D, az, fileLocation)
     ylabel('Transmit beampattern $P(\theta; \mathbf{R})$ (dB)', 'Interpreter', 'latex', 'FontSize', 12);
     
     % --- Place main axis --- %
+    % Method for two legends adapted from https://uk.mathworks.com/matlabcentral/answers/430791-how-to-add-a-second-legend-box-to-a-figure-without-new-plots
     InSet = ax.TightInset;
     ax.Position = [InSet(1:2), 1-InSet(1)-InSet(3)-0.01, 1-InSet(2)-InSet(4)];
     
     % --- Legend --- %
+    % The code is adpated from https://blogs.mathworks.com/pick/2011/06/24/flexible-legends/
     leg = legend(ax, [h_radar, h_mse, h_maxmin, h_finalmm], ...
         {'Radar only', 'MSE', 'MaxMin (fixed $\kappa$)', 'MaxMin (adaptive $\kappa$)'}, ...
         'Interpreter', 'latex', 'FontSize', 9, ...

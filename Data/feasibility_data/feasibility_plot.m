@@ -76,10 +76,12 @@ xlabel('SINR threshold $\Gamma$ (dB)', 'Interpreter', 'latex', 'FontSize', 13);
 ylabel('Feasibility probability', 'Interpreter', 'latex', 'FontSize', 13);
 
 % ----- place main axis ------- %
+% Method for two legends adapted from https://uk.mathworks.com/matlabcentral/answers/430791-how-to-add-a-second-legend-box-to-a-figure-without-new-plots
 InSet = ax.TightInset;
 ax.Position = [InSet(1:2), 1-InSet(1)-InSet(3)-0.01, 1-InSet(2)-InSet(4)];
 
 %-----legend 1 box
+% The code is adpated from https://blogs.mathworks.com/pick/2011/06/24/flexible-legends/
 leg1 = legend(ax, [h_mse, h_maxmin, h_sca], { 'MSE', 'MaxMin (fixed $\kappa$)', 'MaxMin (adaptive $\kappa$)'}, 'Interpreter', 'latex', 'FontSize', 9, ...
     'Box', 'on', 'EdgeColor', [0.5 0.5 0.5], ...
     'AutoUpdate', 'off');

@@ -82,17 +82,19 @@ xlabel('SINR threshold $\Gamma$ (dB)', 'Interpreter', 'latex', 'FontSize', 12);
 ylabel('Average sidelobe power $P_{side}$ (dB)',  'Interpreter', 'latex', 'FontSize', 12);
 
 % --- Place main axes tight ---%
+%
+% Method adapted from https://uk.mathworks.com/matlabcentral/answers/471605-how-to-use-position-property-to-make-axes-height-tight-to-figure-height
 InSet = ax.TightInset;
 ax.Position = [InSet(1:2), 1-InSet(1)-InSet(3)-0.01, 1-InSet(2)-InSet(4)];
 
 % --- Legend 1: Method ---%
+% The code is adpated from https://blogs.mathworks.com/pick/2011/06/24/flexible-legends/
 leg1 = legend(ax, [h_mse, h_maxmin, h_sca], ...
               {'MSE','MaxMin (fixed $\kappa$)', 'MaxMin (adaptive $\kappa$)'}, ...
               'Interpreter', 'latex', 'FontSize', 9, ...
               'Box', 'on', 'EdgeColor', [0.5 0.5 0.5], ...
               'AutoUpdate', 'off');
 
-% Position at top-left (sidelobe data grows with Γ, so top-left is open)
 leg1.Position(1) = ax.Position(1) + 0.02;
 leg1.Position(2) = ax.Position(2) + ax.Position(4) - leg1.Position(4) - 0.02;
 
