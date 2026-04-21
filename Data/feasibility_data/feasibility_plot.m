@@ -85,6 +85,7 @@ ax.Position = [InSet(1:2), 1-InSet(1)-InSet(3)-0.01, 1-InSet(2)-InSet(4)];
 leg1 = legend(ax, [h_mse, h_maxmin, h_sca], { 'MSE', 'MaxMin (fixed $\kappa$)', 'MaxMin (adaptive $\kappa$)'}, 'Interpreter', 'latex', 'FontSize', 9, ...
     'Box', 'on', 'EdgeColor', [0.5 0.5 0.5], ...
     'AutoUpdate', 'off');
+% <LLM assisted reviewed: 18/04/2026> Adjust legend position, tested and modified by Hananh Nolan
 leg1.Position(1) = ax.Position(1) + ax.Position(3) - leg1.Position(3) - 0.01;
 leg1.Position(2) = ax.Position(2) + ax.Position(4) - leg1.Position(4) - 0.01;
 

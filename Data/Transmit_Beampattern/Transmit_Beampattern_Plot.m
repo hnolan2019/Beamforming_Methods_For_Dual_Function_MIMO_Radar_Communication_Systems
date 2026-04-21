@@ -104,6 +104,8 @@ function plot_transmit_beampattern(D, az, fileLocation)
         'Interpreter', 'latex', 'FontSize', 9, ...
         'Box', 'on', 'EdgeColor', [0.5 0.5 0.5], ...
         'AutoUpdate', 'off');
+
+    % <LLM assisted reviewed: 18/04/2026> Adjust legend position, tested and modified by Hananh Nolan
     leg.Position(1) = ax.Position(1) + ax.Position(3) - leg.Position(3) - 0.01;
     leg.Position(2) = ax.Position(2) + 0.01; 
     
