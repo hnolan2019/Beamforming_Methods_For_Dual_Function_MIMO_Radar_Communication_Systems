@@ -12,7 +12,7 @@ c_K6 = [237, 177, 32]/255;
 fileLocation = 'DFRC_Sidelobe_Plot.pdf';
 
 % --- Load combined sidelobe data ---%
-data = readtable('updated_sidelobe_power_results.csv');
+data = readtable('Sidelobe_Power_Results.csv');
 
 % --- Reshape into per-K columns for each method ---%
 gamma = unique(data.Gamma_dB);

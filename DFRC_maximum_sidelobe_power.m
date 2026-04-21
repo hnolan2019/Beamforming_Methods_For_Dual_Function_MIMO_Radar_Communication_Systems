@@ -192,7 +192,7 @@ function export_sidelobe_power(gamma_db_range, K_values, MSE_pow, MXM_pow, SCA_p
         'VariableNames', {'K', 'Gamma_dB', 'MSE_Sidelobe_dB', 'MaxMin_Sidelobe_dB', 'SCA_Sidelobe_dB'});
 
     % --- Filename encodes the operating point ---
-    fname = sprintf('sidelobe_power_data.csv', K, round(gamma_db));
+    fname = sprintf('Sidelobe_Power_Results.csv', K, round(gamma_db));
     fpath = fullfile(data_dir, fname);
 
     writetable(T, fpath);

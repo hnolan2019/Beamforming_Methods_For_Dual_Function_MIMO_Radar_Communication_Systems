@@ -1,8 +1,4 @@
-% --- numerically evaluate the MIMO radar transmit beam patterns -------%
-% Simulate 
-% Paper MSE
-% Conference Paper Solution
-% Final Solution
+% Simulate the feasbility of the proposed methods at differenct operating points (gamma and K) and export the data for plotting
 %
 % Feasibility Plot - separated from transmit beampattern as other method
 % takes too long
@@ -14,7 +10,7 @@
 % (4) 1 Target directions from basestation: 0 degrees
 % (5) Ideal beamwidth: 10 degrees
 % (6) Grid points obtained by unform sampling the range [-90 to 90] with
-%     resolution 0.5
+%     resolution 0.1
 
 clear all; close all; clc
 
@@ -80,21 +76,21 @@ for g_idx = 1:length(gamma_db_range)
             parfor idx = 1:mc_iterations
                 h = function_generate_channel(M, K);
             
-                % Simulation (2) MSE
+                % MSE Optimisation 
                 [~, ~, ~, status] = function_SDR_MSE_Joint_Radar_Optimisation(a, A_tgt, des, gamma, h, K, L, P, Pt, M, num_pairs, wc);
                 if ~contains(status, 'Solved')
                     continue;
                 end
                 success_mse(idx) = 1;
             
-                % Simulation (3) SCA
+                % Max-Min with SCA Optimisation 
                 [~, ~, ~, ~, status] = function_Max_Min_Successive_Convex_Solution(a, A_tgt, h, K, gamma, passband_idx, stopband_idx, P, Pt, M);
                 if ~contains(status, 'Solved')
                     continue;
                 end
                 success_final(idx) = 1;
             
-                % Simulation (4)
+                % MaxMin Optimisation 
                 [~, ~, ~, status] = function_SDR_MaxMin_Optimisation(a, A_tgt, h, K, gamma, passband_idx, stopband_idx, P, Pt, M);
                 if ~contains(status, 'Solved')
                     continue;
